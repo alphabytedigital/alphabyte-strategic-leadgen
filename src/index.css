@@ -8,19 +8,19 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 6.7%;
+    --background: 0 0% 3.9%;
     --foreground: 0 0% 96%;
 
-    --card: 0 0% 10%;
+    --card: 0 0% 7.8% / 0.5;
     --card-foreground: 0 0% 96%;
 
-    --popover: 0 0% 8%;
+    --popover: 0 0% 7.8% / 0.9;
     --popover-foreground: 0 0% 96%;
 
     --primary: 0 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 20%;
+    --secondary: 0 0% 15.7%;
     --secondary-foreground: 0 0% 96%;
 
     --muted: 0 0% 15%;
@@ -32,21 +32,26 @@ All colors MUST be HSL.
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
+    --border: 0 0% 20% / 0.3;
     --input: 0 0% 20%;
     --ring: 0 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Custom brand colors */
     --brand-red: 0 100% 50%;
-    --brand-dark: 0 0% 6.7%;
-    --brand-gray: 0 0% 20%;
+    --brand-dark: 0 0% 3.9%;
+    --brand-charcoal: 0 0% 7.8%;
     --brand-light: 0 0% 96%;
 
+    /* Glassmorphic effects */
+    --glass-bg: hsla(0, 0%, 7.8%, 0.5);
+    --glass-border: hsla(0, 0%, 100%, 0.1);
+    --glass-hover-border: hsla(0, 100%, 50%, 0.5);
+
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 6.7%) 0%, hsl(0 0% 12%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 10%) 0%, hsl(0 0% 15%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 3.9%) 0%, hsl(0 0% 7.8%) 100%);
+    --gradient-card: linear-gradient(135deg, hsla(0, 0%, 7.8%, 0.5) 0%, hsla(0, 0%, 11.8%, 0.5) 100%);
     --gradient-red: linear-gradient(135deg, hsl(0 100% 50%) 0%, hsl(0 100% 40%) 100%);
 
     /* Shadows */
@@ -54,6 +59,7 @@ All colors MUST be HSL.
     --shadow-md: 0 4px 16px hsla(0, 0%, 0%, 0.4);
     --shadow-lg: 0 8px 32px hsla(0, 0%, 0%, 0.5);
     --shadow-red-glow: 0 0 40px hsla(0, 100%, 50%, 0.3);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -119,6 +125,18 @@ All colors MUST be HSL.
     @apply bg-gradient-to-r from-primary to-red-600 bg-clip-text text-transparent;
   }
 
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card:hover {
+    border-color: var(--glass-hover-border);
+  }
+
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
@@ -129,6 +147,10 @@ All colors MUST be HSL.
 
   .slide-up {
     animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .drift-in {
+    animation: driftIn 1s ease-out forwards;
   }
 
   @keyframes fadeIn {
@@ -148,6 +170,17 @@ All colors MUST be HSL.
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes driftIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
     }
   }
 }

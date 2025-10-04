@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import AnimatedBackground from "@/components/AnimatedBackground";
 import BookingModal from "@/components/BookingModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -51,7 +52,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navigation onBookCallClick={() => setIsBookingModalOpen(true)} />
+      <AnimatedBackground />
+      <Navigation onBookingClick={() => setIsBookingModalOpen(true)} />
 
       {/* Hero Section */}
       <section

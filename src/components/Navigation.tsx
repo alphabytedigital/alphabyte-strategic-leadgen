@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface NavigationProps {
-  onBookCallClick: () => void;
+  onBookingClick: () => void;
 }
 
-const Navigation = ({ onBookCallClick }: NavigationProps) => {
+const Navigation = ({ onBookingClick }: NavigationProps) => {
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,18 +22,24 @@ const Navigation = ({ onBookCallClick }: NavigationProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  }, [location]);
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+    } else {
+      const element = document.getElementById(sectionId);
+      element?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        isScrolled ? 'glass-card' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -41,37 +50,25 @@ const Navigation = ({ onBookCallClick }: NavigationProps) => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("services")}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection("why-us")}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Why Us
-            </button>
-            <button
-              onClick={() => scrollToSection("partnership")}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Partnership
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Contact
-            </button>
-            <Button
-              onClick={onBookCallClick}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(255,0,0,0.3)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,0,0,0.5)]"
-            >
-              Book a Discovery Call
-            </Button>
+          <div className="hidden lg:flex items-center space-x-8">
+            <Link to="/" className="text-foreground/90 hover:text-primary transition-colors">Home</Link>
+            <Link to="/it-process-outsourcing" className="text-foreground/90 hover:text-primary transition-colors">IT Process Outsourcing</Link>
+            <Link to="/saas-support" className="text-foreground/90 hover:text-primary transition-colors">SaaS Support</Link>
+            <div className="relative" onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
+              <button className="flex items-center gap-1 text-foreground/90 hover:text-primary transition-colors">
+                Strategic Services <ChevronDown className="w-4 h-4" />
+              </button>
+              {isServicesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-56 glass-card rounded-lg py-2 shadow-lg">
+                  <Link to="/cybersecurity" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10">Cybersecurity</Link>
+                  <Link to="/project-management" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10">Project Management</Link>
+                  <Link to="/business-solutions" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10">Business Solutions</Link>
+                </div>
+              )}
+            </div>
+            <button onClick={() => scrollToSection('why-us')} className="text-foreground/90 hover:text-primary transition-colors">Why Us</button>
+            <button onClick={() => scrollToSection('contact')} className="text-foreground/90 hover:text-primary transition-colors">Contact</button>
+            <Button onClick={onBookingClick} className="shadow-red-glow">Book a Discovery Call</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,39 +82,23 @@ const Navigation = ({ onBookCallClick }: NavigationProps) => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-4 bg-background/95 backdrop-blur-md rounded-lg mb-4">
-            <button
-              onClick={() => scrollToSection("services")}
-              className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition-colors"
-            >
-              Services
+          <div className="lg:hidden glass-card rounded-lg mt-2 py-4 px-4 space-y-4 mb-4">
+            <Link to="/" className="block text-foreground/90 hover:text-primary py-2">Home</Link>
+            <Link to="/it-process-outsourcing" className="block text-foreground/90 hover:text-primary py-2">IT Process Outsourcing</Link>
+            <Link to="/saas-support" className="block text-foreground/90 hover:text-primary py-2">SaaS Support</Link>
+            <button onClick={() => setIsServicesOpen(!isServicesOpen)} className="flex items-center gap-1 text-foreground/90 hover:text-primary py-2 w-full">
+              Strategic Services <ChevronDown className={`w-4 h-4 ${isServicesOpen ? 'rotate-180' : ''}`} />
             </button>
-            <button
-              onClick={() => scrollToSection("why-us")}
-              className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition-colors"
-            >
-              Why Us
-            </button>
-            <button
-              onClick={() => scrollToSection("partnership")}
-              className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition-colors"
-            >
-              Partnership
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition-colors"
-            >
-              Contact
-            </button>
-            <div className="px-4">
-              <Button
-                onClick={onBookCallClick}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                Book a Discovery Call
-              </Button>
-            </div>
+            {isServicesOpen && (
+              <div className="pl-4 space-y-2">
+                <Link to="/cybersecurity" className="block text-foreground/80 hover:text-primary py-2">Cybersecurity</Link>
+                <Link to="/project-management" className="block text-foreground/80 hover:text-primary py-2">Project Management</Link>
+                <Link to="/business-solutions" className="block text-foreground/80 hover:text-primary py-2">Business Solutions</Link>
+              </div>
+            )}
+            <button onClick={() => scrollToSection('why-us')} className="block text-foreground/90 hover:text-primary py-2 text-left w-full">Why Us</button>
+            <button onClick={() => scrollToSection('contact')} className="block text-foreground/90 hover:text-primary py-2 text-left w-full">Contact</button>
+            <Button onClick={onBookingClick} className="w-full shadow-red-glow">Book a Discovery Call</Button>
           </div>
         )}
       </div>
