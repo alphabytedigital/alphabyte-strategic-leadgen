@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import BookingModal from "@/components/BookingModal";
@@ -143,6 +144,12 @@ const Index = () => {
                 end-user support to proactive infrastructure management, we ensure your team's
                 productivity and business continuity, allowing you to scale fearlessly.
               </p>
+              <Link 
+                to="/it-process-outsourcing"
+                className="inline-flex items-center gap-2 mt-4 text-primary hover:text-primary/80 transition-colors"
+              >
+                Explore Managed IT <ArrowRight className="w-4 h-4" />
+              </Link>
             </Card>
 
             <Card
@@ -168,6 +175,12 @@ const Index = () => {
                 support department for your SaaS product, reducing your in-house costs by up to 70%
                 while delivering exceptional L1/L2 technical support to your customers.
               </p>
+              <Link 
+                to="/saas-support"
+                className="inline-flex items-center gap-2 mt-4 text-primary hover:text-primary/80 transition-colors"
+              >
+                Explore SaaS Support <ArrowRight className="w-4 h-4" />
+              </Link>
             </Card>
           </div>
 
@@ -246,7 +259,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card
               id="advantage-1"
               data-animate
@@ -303,6 +316,15 @@ const Index = () => {
                 so you can focus on the future.
               </p>
             </Card>
+          </div>
+
+          <div className="text-center">
+            <Link 
+              to="/why-us"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-lg font-semibold"
+            >
+              Discover Our Philosophy <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -453,36 +475,36 @@ const Index = () => {
               <h4 className="text-lg font-bold mb-4">Navigation</h4>
               <ul className="space-y-2">
                 <li>
-                  <button
-                    onClick={() => scrollToSection("services")}
+                  <Link
+                    to="/it-process-outsourcing"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Services
-                  </button>
+                    IT Process Outsourcing
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    onClick={() => scrollToSection("why-us")}
+                  <Link
+                    to="/saas-support"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    SaaS Support
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/why-us"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     Why Us
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    onClick={() => scrollToSection("partnership")}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Our Partnership
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("contact")}
+                  <Link
+                    to="/contact"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     Contact
-                  </button>
+                  </Link>
                 </li>
               </ul>
             </div>

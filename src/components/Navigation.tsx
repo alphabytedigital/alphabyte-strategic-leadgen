@@ -54,20 +54,24 @@ const Navigation = ({ onBookingClick }: NavigationProps) => {
             <Link to="/" className="text-foreground/90 hover:text-primary transition-colors">Home</Link>
             <Link to="/it-process-outsourcing" className="text-foreground/90 hover:text-primary transition-colors">IT Process Outsourcing</Link>
             <Link to="/saas-support" className="text-foreground/90 hover:text-primary transition-colors">SaaS Support</Link>
-            <div className="relative" onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
+            <div 
+              className="relative" 
+              onMouseEnter={() => setIsServicesOpen(true)} 
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
               <button className="flex items-center gap-1 text-foreground/90 hover:text-primary transition-colors">
                 Strategic Services <ChevronDown className="w-4 h-4" />
               </button>
               {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 glass-card rounded-lg py-2 shadow-lg">
-                  <Link to="/cybersecurity" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10">Cybersecurity</Link>
-                  <Link to="/project-management" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10">Project Management</Link>
-                  <Link to="/business-solutions" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10">Business Solutions</Link>
+                <div className="absolute top-full left-0 mt-2 w-56 glass-card rounded-lg py-2 shadow-lg z-50">
+                  <Link to="/cybersecurity" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10 rounded">Cybersecurity</Link>
+                  <Link to="/project-management" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10 rounded">Project Management</Link>
+                  <Link to="/business-solutions" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10 rounded">Business Solutions</Link>
                 </div>
               )}
             </div>
-            <button onClick={() => scrollToSection('why-us')} className="text-foreground/90 hover:text-primary transition-colors">Why Us</button>
-            <button onClick={() => scrollToSection('contact')} className="text-foreground/90 hover:text-primary transition-colors">Contact</button>
+            <Link to="/why-us" className="text-foreground/90 hover:text-primary transition-colors">Why Us</Link>
+            <Link to="/contact" className="text-foreground/90 hover:text-primary transition-colors">Contact</Link>
             <Button onClick={onBookingClick} className="shadow-red-glow">Book a Discovery Call</Button>
           </div>
 
@@ -96,8 +100,8 @@ const Navigation = ({ onBookingClick }: NavigationProps) => {
                 <Link to="/business-solutions" className="block text-foreground/80 hover:text-primary py-2">Business Solutions</Link>
               </div>
             )}
-            <button onClick={() => scrollToSection('why-us')} className="block text-foreground/90 hover:text-primary py-2 text-left w-full">Why Us</button>
-            <button onClick={() => scrollToSection('contact')} className="block text-foreground/90 hover:text-primary py-2 text-left w-full">Contact</button>
+            <Link to="/why-us" className="block text-foreground/90 hover:text-primary py-2">Why Us</Link>
+            <Link to="/contact" className="block text-foreground/90 hover:text-primary py-2">Contact</Link>
             <Button onClick={onBookingClick} className="w-full shadow-red-glow">Book a Discovery Call</Button>
           </div>
         )}
