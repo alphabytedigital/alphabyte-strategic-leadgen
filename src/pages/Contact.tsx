@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navigation from '@/components/Navigation';
 import BookingModal from '@/components/BookingModal';
+import Footer from '@/components/Footer';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import contactHero from '@/assets/contact-hero.jpg';
 
@@ -79,11 +80,11 @@ const Contact = () => {
             </div>
 
             {/* Right Side - Contact Form */}
-            <div className="glass-card p-8 hover-lift rounded-xl">
+            <div className="glass-card p-8 hover-lift rounded-xl flex flex-col">
               <h2 className="text-3xl font-bold mb-6 text-foreground">
                 Send Us a <span className="text-primary">Message</span>
               </h2>
-              <div className="w-full h-full min-h-[480px] rounded-xl overflow-hidden">
+              <div className="flex-1 rounded-xl overflow-hidden" style={{ minHeight: '600px' }}>
                 <iframe 
                   width="100%" 
                   height="100%" 
@@ -91,7 +92,7 @@ const Contact = () => {
                   frameBorder="0" 
                   marginWidth={0} 
                   marginHeight={0} 
-                  style={{ border: 'none', minHeight: '480px' }} 
+                  style={{ border: 'none', height: '100%' }} 
                   allowFullScreen 
                   className="rounded-xl"
                 />
@@ -114,6 +115,7 @@ const Contact = () => {
               Book Your Discovery Call
             </button>
           </div>
+          <Footer />
         </div>
       </main>
 

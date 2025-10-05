@@ -55,7 +55,7 @@ const Navigation = ({ onBookingClick }: NavigationProps) => {
             <Link to="/it-process-outsourcing" className="text-foreground/90 hover:text-primary transition-colors">IT Process Outsourcing</Link>
             <Link to="/saas-support" className="text-foreground/90 hover:text-primary transition-colors">SaaS Support</Link>
             <div 
-              className="relative" 
+              className="relative group" 
               onMouseEnter={() => setIsServicesOpen(true)} 
               onMouseLeave={() => setIsServicesOpen(false)}
             >
@@ -63,7 +63,7 @@ const Navigation = ({ onBookingClick }: NavigationProps) => {
                 Strategic Services <ChevronDown className="w-4 h-4" />
               </button>
               {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 glass-card rounded-lg py-2 shadow-lg z-50">
+                <div className="absolute top-full left-0 mt-2 w-56 glass-card rounded-lg py-2 shadow-lg z-50 before:content-[''] before:absolute before:-top-2 before:left-0 before:right-0 before:h-2">
                   <Link to="/cybersecurity" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10 rounded">Cybersecurity</Link>
                   <Link to="/project-management" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10 rounded">Project Management</Link>
                   <Link to="/business-solutions" className="block px-4 py-2 text-foreground/90 hover:text-primary hover:bg-primary/10 rounded">Business Solutions</Link>

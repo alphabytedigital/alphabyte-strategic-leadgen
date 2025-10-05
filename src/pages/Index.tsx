@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import BookingModal from "@/components/BookingModal";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -52,7 +53,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen relative">
       <AnimatedBackground />
       <Navigation onBookingClick={() => setIsBookingModalOpen(true)} />
 
@@ -105,7 +106,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-background">
+      <section id="services" className="relative z-10 py-24">
         <div className="container mx-auto px-4">
           <div
             id="services-header"
@@ -123,10 +124,10 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <Card
+            <div
               id="service-1"
               data-animate
-              className={`p-8 bg-card border-border hover-lift ${
+              className={`glass-card p-8 hover-lift ${
                 animatedElements.has("service-1") ? "slide-up" : "opacity-0"
               }`}
               style={{ animationDelay: "0.1s" }}
@@ -150,12 +151,12 @@ const Index = () => {
               >
                 Explore Managed IT <ArrowRight className="w-4 h-4" />
               </Link>
-            </Card>
+            </div>
 
-            <Card
+            <div
               id="service-2"
               data-animate
-              className={`p-8 bg-card border-border hover-lift ${
+              className={`glass-card p-8 hover-lift ${
                 animatedElements.has("service-2") ? "slide-up" : "opacity-0"
               }`}
               style={{ animationDelay: "0.2s" }}
@@ -181,7 +182,7 @@ const Index = () => {
               >
                 Explore SaaS Support <ArrowRight className="w-4 h-4" />
               </Link>
-            </Card>
+            </div>
           </div>
 
           <div
@@ -193,7 +194,7 @@ const Index = () => {
               Add-On <span className="text-gradient-red">Strategic Services</span>
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 bg-card border-border hover-lift">
+              <div className="glass-card p-6 hover-lift">
                 <div className="bg-primary/10 p-3 rounded-lg w-fit mb-4">
                   <Shield className="w-6 h-6 text-primary" />
                 </div>
@@ -202,9 +203,9 @@ const Index = () => {
                   Through our expert partners, we integrate with your security solutions to provide
                   24/7 threat monitoring, SIEM management, and incident response.
                 </p>
-              </Card>
+              </div>
 
-              <Card className="p-6 bg-card border-border hover-lift">
+              <div className="glass-card p-6 hover-lift">
                 <div className="bg-primary/10 p-3 rounded-lg w-fit mb-4">
                   <ClipboardCheck className="w-6 h-6 text-primary" />
                 </div>
@@ -213,9 +214,9 @@ const Index = () => {
                   Our certified project managers oversee your global technology initiatives,
                   ensuring projects are delivered on time and on budget.
                 </p>
-              </Card>
+              </div>
 
-              <Card className="p-6 bg-card border-border hover-lift">
+              <div className="glass-card p-6 hover-lift">
                 <div className="bg-primary/10 p-3 rounded-lg w-fit mb-4">
                   <RefreshCw className="w-6 h-6 text-primary" />
                 </div>
@@ -226,7 +227,7 @@ const Index = () => {
                   We solve your business challenges with technology. From managing user adoption to
                   designing custom workflows, we ensure maximum ROI.
                 </p>
-              </Card>
+              </div>
             </div>
           </div>
         </div>
@@ -235,7 +236,7 @@ const Index = () => {
       {/* Why Us Section */}
       <section
         id="why-us"
-        className="py-24 relative"
+        className="relative z-10 py-24"
         style={{
           backgroundImage: `linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.9)), url(${teamCollaboration})`,
           backgroundSize: "cover",
@@ -260,10 +261,10 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card
+            <div
               id="advantage-1"
               data-animate
-              className={`p-8 bg-card/90 backdrop-blur-sm border-border hover-lift ${
+              className={`glass-card p-8 hover-lift ${
                 animatedElements.has("advantage-1") ? "slide-up" : "opacity-0"
               }`}
               style={{ animationDelay: "0.1s" }}
@@ -273,14 +274,14 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Our model isn't just about saving money; it's about reallocating your resources for
                 growth. By leveraging elite Sri Lankan talent, we reduce your operational costs by
-                up to 70%, turning your IT budget into an investment in innovation.
+                 up to 70%, turning your IT budget into an investment in innovation.
               </p>
-            </Card>
+            </div>
 
-            <Card
+            <div
               id="advantage-2"
               data-animate
-              className={`p-8 bg-card/90 backdrop-blur-sm border-border hover-lift ${
+              className={`glass-card p-8 hover-lift ${
                 animatedElements.has("advantage-2") ? "slide-up" : "opacity-0"
               }`}
               style={{ animationDelay: "0.2s" }}
@@ -294,15 +295,15 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed">
                 We don't operate in a silo. We become a deeply integrated part of your team,
                 adopting your culture and aligning with your goals. Through radical transparency
-                and constant communication, we function as your strategic internal department, not
-                an external vendor.
+                 and constant communication, we function as your strategic internal department, not
+                 an external vendor.
               </p>
-            </Card>
+            </div>
 
-            <Card
+            <div
               id="advantage-3"
               data-animate
-              className={`p-8 bg-card/90 backdrop-blur-sm border-border hover-lift ${
+              className={`glass-card p-8 hover-lift ${
                 animatedElements.has("advantage-3") ? "slide-up" : "opacity-0"
               }`}
               style={{ animationDelay: "0.3s" }}
@@ -312,10 +313,10 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Our success is a direct result of yours. By removing technological roadblocks and
                 ensuring business continuity, we empower you to focus on scaling your business,
-                entering new markets, and serving your customers. We handle the complexities of IT
-                so you can focus on the future.
+                 entering new markets, and serving your customers. We handle the complexities of IT
+                 so you can focus on the future.
               </p>
-            </Card>
+            </div>
           </div>
 
           <div className="text-center">
@@ -330,7 +331,7 @@ const Index = () => {
       </section>
 
       {/* Partnership Model Section */}
-      <section id="partnership" className="py-24 bg-background">
+      <section id="partnership" className="relative z-10 py-24">
         <div className="container mx-auto px-4">
           <div
             id="partnership-header"
@@ -426,20 +427,13 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-muted relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div
-            id="cta-content"
-            data-animate
-            className={`text-center max-w-3xl mx-auto ${
-              animatedElements.has("cta-content") ? "slide-up" : "opacity-0"
-            }`}
-          >
+      <section id="cta" className="relative z-10 py-24">
+        <div className="container mx-auto px-4">
+          <div className="glass-card p-12 text-center hover-lift">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to Transform Your <span className="text-gradient-red">IT Operations?</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-foreground/80 mb-8 max-w-3xl mx-auto">
               Let's discuss how a strategic partnership with AlphaByte can empower your business to
               achieve its next stage of growth. Your initial 30-minute discovery call is completely
               free.
@@ -455,101 +449,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-card py-16 border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-12 mb-8">
-            <div>
-              <div className="text-2xl font-bold mb-4">
-                <span className="text-foreground">Alphabyte</span>
-                <span className="text-primary"> BPO</span>
-              </div>
-              <p className="text-muted-foreground">
-                Your seamless, strategic IT extension. We empower businesses to scale by delivering
-                world-class IT and customer support operations from our global delivery center in
-                Sri Lanka.
-              </p>
-            </div>
+      <Footer />
 
-            <div>
-              <h4 className="text-lg font-bold mb-4">Navigation</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/it-process-outsourcing"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    IT Process Outsourcing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/saas-support"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    SaaS Support
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/why-us"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Why Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-bold mb-4">Get in Touch</h4>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href={getEmailLink()}
-                    className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                    hello@bpo.alphabyte.biz
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:sales@bpo.alphabyte.biz"
-                    className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                    sales@bpo.alphabyte.biz
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:support@bpo.alphabyte.biz"
-                    className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                    support@bpo.alphabyte.biz
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-border pt-8 text-center text-muted-foreground">
-            <p>&copy; 2025 Alphabyte BPO. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-
-      <BookingModal open={isBookingModalOpen} onOpenChange={setIsBookingModalOpen} />
+      <BookingModal
+        open={isBookingModalOpen}
+        onOpenChange={setIsBookingModalOpen}
+      />
     </div>
   );
 };

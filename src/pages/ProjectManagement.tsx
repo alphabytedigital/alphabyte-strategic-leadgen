@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import BookingModal from '@/components/BookingModal';
+import Footer from '@/components/Footer';
 import { CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -88,6 +89,8 @@ const ProjectManagement = () => {
               Book a Discovery Call
             </Button>
           </div>
+
+          <Footer />
         </div>
       </main>
 

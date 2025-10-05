@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navigation from '@/components/Navigation';
 import BookingModal from '@/components/BookingModal';
+import Footer from '@/components/Footer';
 import { Shield, TrendingUp, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -145,6 +146,8 @@ const WhyUs = () => {
               </Link>
             </div>
           </div>
+
+          <Footer />
         </div>
       </main>
 
