@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import companyLogo from '@/assets/company-logo.png';
 
 interface NavigationProps {
   onBookingClick: () => void;
@@ -44,22 +45,25 @@ const Navigation = ({ onBookingClick }: NavigationProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <div className="text-2xl font-bold">
-            <span className="text-foreground">Alphabyte</span>
-            <span className="text-primary"> BPO</span>
-          </div>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={companyLogo} alt="Alphabyte BPO Logo" className="h-10 w-10 object-contain" />
+            <div className="text-xl md:text-2xl font-bold">
+              <span className="text-foreground">Alphabyte</span>
+              <span className="text-primary"> BPO</span>
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <Link to="/" className="text-foreground/90 hover:text-primary transition-colors">Home</Link>
-            <Link to="/it-process-outsourcing" className="text-foreground/90 hover:text-primary transition-colors">IT Process Outsourcing</Link>
-            <Link to="/saas-support" className="text-foreground/90 hover:text-primary transition-colors">SaaS Support</Link>
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
+            <Link to="/" className="text-sm xl:text-base text-foreground/90 hover:text-primary transition-colors">Home</Link>
+            <Link to="/it-process-outsourcing" className="text-sm xl:text-base text-foreground/90 hover:text-primary transition-colors whitespace-nowrap">IT Process Outsourcing</Link>
+            <Link to="/saas-support" className="text-sm xl:text-base text-foreground/90 hover:text-primary transition-colors whitespace-nowrap">SaaS Support</Link>
             <div 
               className="relative group" 
               onMouseEnter={() => setIsServicesOpen(true)} 
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button className="flex items-center gap-1 text-foreground/90 hover:text-primary transition-colors">
+              <button className="flex items-center gap-1 text-sm xl:text-base text-foreground/90 hover:text-primary transition-colors whitespace-nowrap">
                 Strategic Services <ChevronDown className="w-4 h-4" />
               </button>
               {isServicesOpen && (
@@ -70,15 +74,15 @@ const Navigation = ({ onBookingClick }: NavigationProps) => {
                 </div>
               )}
             </div>
-            <Link to="/why-us" className="text-foreground/90 hover:text-primary transition-colors">Why Us</Link>
-            <Link to="/contact" className="text-foreground/90 hover:text-primary transition-colors">Contact</Link>
-            <Button onClick={onBookingClick} className="shadow-red-glow">Book a Discovery Call</Button>
+            <Link to="/why-us" className="text-sm xl:text-base text-foreground/90 hover:text-primary transition-colors whitespace-nowrap">Why Us</Link>
+            <Link to="/contact" className="text-sm xl:text-base text-foreground/90 hover:text-primary transition-colors">Contact</Link>
+            <Button onClick={onBookingClick} className="shadow-red-glow text-sm xl:text-base whitespace-nowrap">Book a Discovery Call</Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-primary"
+            className="lg:hidden text-foreground hover:text-primary"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
